@@ -1,0 +1,28 @@
+---
+title: 'Computer Assignment 2: France (Group 12)'
+author: "'Javier Torralba Flores (ANR: u146430, SNR: 2042878), Maximilian Grotz (ANR:"
+  u271366, SNR: 2056313), Abdirahman Nuur (ANR: u824009 , SNR: 2057152) and Mathieu
+  Van de Vel (ANR: u130770, SNR: 2050053)'
+date: "14/04/2021"
+output:
+  html_notebook: default
+---
+
+# Q1: Data preperation
+
+```{r}
+
+
+
+```
+
+
+# Q2: 
+
+
+
+## 
+
+
+# Q3: Feldstein-Horioka puzzle
+
