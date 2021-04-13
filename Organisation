@@ -1,0 +1,25 @@
+To do's
+
+DATA COLLECTION / CLEANING / QUESTION1
+
+  Finding data and putting it into "sourcecode".
+    1. Current account balance as a % of GDP (we found quarterly)
+    2. General government debt as a % of GDP (annual)
+    3. Interest rate on government bonds (10 year), also called “Long term interest rate”, in %/annum (
+    4. Exchange rate against the US dollar
+    5. Total GDP, in millions of US dollars
+    6. Investment (usually Gross Fixed Capital Formation), in millions of US dollars
+    7. Gross national savings as a % of GDP (savings rate)
+- Quarterly!
+- One table for quarterly variables, one for yearly
+- Variable in column, years in rows
+- 
+
+QUESTION 2
+- Plot with government debt and interest rate in two seperate graphs (ideally in graph)
+- Current account and the exchange rate in one graph
+
+
+QUESTION 3
+- New column with investment rate as a % of GDP
+- Savings and investment rates as percentage of GDP in one graph
