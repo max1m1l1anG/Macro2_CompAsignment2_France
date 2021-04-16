@@ -1,12 +1,12 @@
 ---
 title: 'Computer Assignment 2: France (Group 12)'
-author: "Javier Torralba Flores (ANR: u146430, SNR: 2042878), Maximilian Grotz (ANR: u271366, SNR: 2056313), Abdirahman Nuur (ANR: u824009 , SNR: 2057152) and Mathieu  Van de Vel (ANR: u130770, SNR: 2050053)"
+author:
+  - Javier Torralba Flores (ANR u146430, SNR 2042878)
+  - Maximilian Grotz (ANR u271366, SNR 2056313)
+  - Abdirahman Nuur (ANR u824009 , SNR 2057152)
+  - Mathieu  Van de Vel (ANR u130770, SNR 2050053)
 date: "14/04/2021"
 output:
-  html_notebook: default
-  html_document:
-    df_print: paged
-  word_document: default
   pdf_document: default
 ---
 
@@ -14,13 +14,20 @@ output:
 
 We will be using the GDP data in euro, as this was the best data we found and transforming it using the exchange rate would lead to high fluctuation.
 
-```{r}
-library(readxl)
+```{r message = FALSE, warning = FALSE}
+# Here we import all relevant packages and set options
+
 library(dplyr)
 library(tidyverse)
 library(lubridate) # This package is used for working with dates
+library(knitr) # This package is for nicer tables
+library(kableExtra) # Package for even nicer tables.https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html#Overview
 
-options(scipen = 99999)
+options(scipen = 999) # Disable scientific notation
+
+```
+
+```{r}
 
 # Importing the Current Account Balance as a % of GDP of France
 
@@ -30,7 +37,8 @@ CABalance_FR <- read_csv("sourcecode/FRED_bop_france_quarterly.csv",
   rename(date = DATE, CAasPercGDP_quart_FR = FRAB6BLTT02STSAQ)
 
 
-# Importing the General Government Debt as a % of GDP. THIS IS NOT IN PERCENT! GOVERNMENT DEBT OF 100%  = 1
+# Importing the General Government Debt as a % of GDP. 
+# THIS IS NOT IN PERCENT! GOVERNMENT DEBT OF 100%  => 1
 
 GovDebt_FR <- read_csv("sourcecode/OECD_gov_debt_annual.csv", 
     col_types = cols(LOCATION = col_character(), 
@@ -43,8 +51,6 @@ GovDebt_FR <- read_csv("sourcecode/OECD_gov_debt_annual.csv",
   mutate(LOCATION = NULL, GovDebt_ann_FR = Value / 100, Value = NULL)
 
 
-# Importing Interest Rate on Government Bonds (10 year), also called "Long term interest rate", in %/annum
-
 # This function transform dates in a quarterly format of "2000-Q1" to 2000-01-01
 QuarterToDate <- function(QuarterlyDate){
   
@@ -53,7 +59,7 @@ QuarterToDate <- function(QuarterlyDate){
   Month <- 3 * as.numeric(NumberofQuarter) - 2
   Month <- ifelse(Month == 10, Month, paste(0, Month))
   
-  Year <- substr(QuarterlyDate ,1, 4)
+  Year <- substr(QuarterlyDate, 1, 4)
   
   Date_String <- paste(Year, "-", Month, "-01") %>%
     str_replace_all(" ", "")
@@ -63,12 +69,17 @@ QuarterToDate <- function(QuarterlyDate){
   Date
 }
 
+# Importing Interest Rate on Government Bonds (10 year), 
+# also called "Long term interest rate", in %/annum
+
 IntRate_FR <- read_csv("sourcecode/OECD_interest_rates_france_quarterly.csv", 
     col_types = cols(INDICATOR = col_skip(), 
         SUBJECT = col_skip(), MEASURE = col_skip(), 
         FREQUENCY = col_skip(), Value = col_number(), 
         `Flag Codes` = col_skip())) %>%
-  mutate(date = QuarterToDate(TIME), IntRate_quart_FR = Value / 100, Value = NULL, TIME = NULL, LOCATION = NULL)
+  mutate(date = QuarterToDate(TIME),
+         IntRate_quart_FR = Value / 100,
+         Value = NULL, TIME = NULL, LOCATION = NULL)
 
 
 # Exchange rate against the US dollar
@@ -85,7 +96,8 @@ XR_EurUSD <- read_csv("sourcecode/FRED_exchage_rate_quarterly.csv",
 GDP_FR <- read_csv("sourcecode/FRED_euros_france_gdp_quarterly.csv", 
     col_types = cols(DATE = col_date(format = "%d/%m/%Y"), 
         CPMNACSCAB1GQFR = col_number())) %>%
-  mutate(date = DATE, DATE = NULL, GDP_quart_Millionseur_FR = CPMNACSCAB1GQFR, CPMNACSCAB1GQFR = NULL)
+  mutate(date = DATE, GDP_quart_Millionseur_FR = CPMNACSCAB1GQFR,
+         CPMNACSCAB1GQFR = NULL, DATE = NULL)
 
 
 # Investment (usually Gross Fixed Capital Formation), in millions of US dollars
@@ -93,11 +105,13 @@ GDP_FR <- read_csv("sourcecode/FRED_euros_france_gdp_quarterly.csv",
 Invest_FR <- read_csv("sourcecode/FRED_euros_investments_quarterly.csv", 
     col_types = cols(DATE = col_date(format = "%d/%m/%Y"), 
         FRAGFCFQDSMEI = col_number())) %>%
-  mutate(Invest_quart_Millionseur_FR = FRAGFCFQDSMEI / 1000000, FRAGFCFQDSMEI = NULL) %>%
+  mutate(Invest_quart_Millionseur_FR = FRAGFCFQDSMEI / 1000000,
+         FRAGFCFQDSMEI = NULL) %>%
   rename(date = DATE)
 
 
-# Gross national savings as a % of GDP (savings rate). Again, this is in decimals, and not percent
+# Gross national savings as a % of GDP (savings rate). 
+# Again, this is in decimals, and not percent!
 
 SavingsR_FR <- read_csv("sourcecode/OECD_savings_rate_annual.csv", 
     col_types = cols(INDICATOR = col_skip(), 
@@ -119,18 +133,45 @@ DF_FR <- CABalance_FR %>%
   full_join(GovDebt_FR, by = "date") %>%
   full_join(SavingsR_FR, by = "date") %>%
   filter(date != "1998-10-01") %>%
-  mutate(InvestmentR_Fr = Invest_quart_Millionseur_FR / GDP_quart_Millionseur_FR)
+  mutate(InvestmentR_Fr = Invest_quart_Millionseur_FR/GDP_quart_Millionseur_FR)
+
+
+# Creating and printing a table with all the quarterly data
 
 DF_quart_FR <- DF_FR %>%
-  select(!c(GovDebt_ann_FR, SavR_ann_FR))
+  select(!c(GovDebt_ann_FR, SavR_ann_FR)) %>%
+  mutate(date = format(as.Date(date), "%Y-%m"), InvestmentR_Fr = InvestmentR_Fr * 100)%>%
+  rename(`Current Account Balance as % of GDP` = CAasPercGDP_quart_FR,
+          `Inflation Rate` = IntRate_quart_FR,
+          `Exchange Rate €/USD` = XR_quart_EurUSD, 
+          `GDP in millions of €` = GDP_quart_Millionseur_FR, 
+          `Invesment in millions of €` = Invest_quart_Millionseur_FR,
+          `Investment rate as % of GDP` = InvestmentR_Fr,
+         `Date (Year-Month)` = date
+          ) 
+
+DF_quart_FR %>% 
+  kable(caption = "Quarterly data for France") %>%
+  kable_classic(html_font = "Cambria", full_width = TRUE, font_size = 4.5)
+```
+\newpage
+
+```{r}
+# Creating and printing atable with all the annual data
 
 DF_ann_FR <- DF_FR %>%
   select(c(date, GovDebt_ann_FR, SavR_ann_FR)) %>%
-  na.omit()
+  mutate(date = format(as.Date(date), "%Y"),
+         GovDebt_ann_FR = GovDebt_ann_FR * 100,
+         SavR_ann_FR = SavR_ann_FR * 100) %>%
+  na.omit() %>%
+  rename(`General government debt as a % of GDP` = GovDebt_ann_FR, 
+         `Gross national savings as a % of GDP` = SavR_ann_FR, 
+         `Year` = date)
 
-print(DF_quart_FR)
-
-print(DF_ann_FR)
+DF_ann_FR %>% 
+  kable(caption = "Annual data for France") %>%
+  kable_classic(html_font = "Cambria", full_width = TRUE)
 
 ```
 
