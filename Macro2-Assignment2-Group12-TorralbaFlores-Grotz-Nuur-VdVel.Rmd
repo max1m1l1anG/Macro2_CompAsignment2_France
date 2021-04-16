@@ -118,7 +118,6 @@ DataFrame_FR <- CABalance_FR %>%
 
 print(DataFrame_FR)
 
-DataFrame
 
 ```
 
@@ -127,9 +126,6 @@ DataFrame
 
 # Q2: 
 
-
-
-## 
 
 
 # Q3: Feldstein-Horioka puzzle
