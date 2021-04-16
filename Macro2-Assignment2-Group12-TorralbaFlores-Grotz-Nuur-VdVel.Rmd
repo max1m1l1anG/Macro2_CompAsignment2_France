@@ -107,7 +107,7 @@ SavingsR_FR <- read_csv("sourcecode/OECD_savings_rate_annual.csv",
 
 # Merging them all together
 
-DataFrame_FR <- CABalance_FR %>%
+DF_FR <- CABalance_FR %>%
   full_join(IntRate_FR, by = "date") %>%
   full_join(XR_EurUSD, by = "date") %>%
   full_join(GDP_FR, by = "date") %>%
@@ -116,8 +116,16 @@ DataFrame_FR <- CABalance_FR %>%
   full_join(SavingsR_FR, by = "date") %>%
   filter(date != "1998-10-01")
 
-print(DataFrame_FR)
+DF_quart_FR <- DF_FR %>%
+  select(!c(GovDebt_ann_FR, SavR_ann_FR))
 
+DF_ann_FR <- DF_FR %>%
+  select(c(date, GovDebt_ann_FR, SavR_ann_FR)) %>%
+  na.omit()
+
+print(DF_quart_FR)
+
+print(DF_ann_FR)
 
 ```
 
