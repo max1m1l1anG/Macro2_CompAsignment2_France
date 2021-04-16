@@ -1,14 +1,18 @@
 ---
 title: 'Computer Assignment 2: France (Group 12)'
-author: "Javier Torralba Flores (ANR: u146430, SNR: 2042878), Maximilian Grotz (ANR:
-  u271366, SNR: 2056313), Abdirahman Nuur (ANR: u824009 , SNR: 2057152) and Mathieu
-  Van de Vel (ANR: u130770, SNR: 2050053)"
+author: "Javier Torralba Flores (ANR: u146430, SNR: 2042878), Maximilian Grotz (ANR: u271366, SNR: 2056313), Abdirahman Nuur (ANR: u824009 , SNR: 2057152) and Mathieu  Van de Vel (ANR: u130770, SNR: 2050053)"
 date: "14/04/2021"
 output:
   html_notebook: default
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
 ---
 
 # Q1: Data preperation
+
+We will be using the GDP data in euro, as this was the best data we found and transforming it using the exchange rate would lead to high fluctuation.
 
 ```{r}
 library(readxl)
@@ -81,7 +85,7 @@ XR_EurUSD <- read_csv("sourcecode/FRED_exchage_rate_quarterly.csv",
 GDP_FR <- read_csv("sourcecode/FRED_euros_france_gdp_quarterly.csv", 
     col_types = cols(DATE = col_date(format = "%d/%m/%Y"), 
         CPMNACSCAB1GQFR = col_number())) %>%
-  mutate(date = DATE, DATE = NULL, GDP_quart_USD_FR = CPMNACSCAB1GQFR * 1000000 / 0.8385451, CPMNACSCAB1GQFR = NULL)
+  mutate(date = DATE, DATE = NULL, GDP_quart_Millionseur_FR = CPMNACSCAB1GQFR, CPMNACSCAB1GQFR = NULL)
 
 
 # Investment (usually Gross Fixed Capital Formation), in millions of US dollars
@@ -89,7 +93,7 @@ GDP_FR <- read_csv("sourcecode/FRED_euros_france_gdp_quarterly.csv",
 Invest_FR <- read_csv("sourcecode/FRED_euros_investments_quarterly.csv", 
     col_types = cols(DATE = col_date(format = "%d/%m/%Y"), 
         FRAGFCFQDSMEI = col_number())) %>%
-  mutate(Invest_quart_USD_FR = FRAGFCFQDSMEI / 0.8385451, FRAGFCFQDSMEI = NULL) %>%
+  mutate(Invest_quart_Millionseur_FR = FRAGFCFQDSMEI / 1000000, FRAGFCFQDSMEI = NULL) %>%
   rename(date = DATE)
 
 
@@ -114,7 +118,8 @@ DF_FR <- CABalance_FR %>%
   full_join(Invest_FR, by = "date") %>%
   full_join(GovDebt_FR, by = "date") %>%
   full_join(SavingsR_FR, by = "date") %>%
-  filter(date != "1998-10-01")
+  filter(date != "1998-10-01") %>%
+  mutate(InvestmentR_Fr = Invest_quart_Millionseur_FR / GDP_quart_Millionseur_FR)
 
 DF_quart_FR <- DF_FR %>%
   select(!c(GovDebt_ann_FR, SavR_ann_FR))
