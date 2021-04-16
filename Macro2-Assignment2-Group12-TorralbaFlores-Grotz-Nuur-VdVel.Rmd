@@ -130,11 +130,48 @@ print(DF_ann_FR)
 ```
 
 
+# Q2: Government debt, interest rate, current account and the exchange rate
+
+## 1. Government debt and interest rate
+
+```{r}
 
 
-# Q2: 
+```
 
 
 
-# Q3: Feldstein-Horioka puzzle
+## 2. Current account and the exchange rate
 
+```{r}
+
+
+```
+
+
+
+## 3. Relevant events and policy responses
+
+
+
+## 4. Currency union and its effects
+
+
+
+# Q3: Investment rate and the Feldstein-Horioka puzzle
+
+## 1. Investment rate
+
+
+## 2. Investment rate: Graph
+
+```{r}
+
+
+```
+
+
+## 3. Feldstein-Horioka puzzle
+
+
+# References
