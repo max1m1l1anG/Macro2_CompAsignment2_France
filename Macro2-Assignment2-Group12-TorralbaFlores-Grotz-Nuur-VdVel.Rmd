@@ -1,8 +1,8 @@
 ---
 title: 'Computer Assignment 2: France (Group 12)'
-author: "'Javier Torralba Flores (ANR: u146430, SNR: 2042878), Maximilian Grotz (ANR:"
+author: "Javier Torralba Flores (ANR: u146430, SNR: 2042878), Maximilian Grotz (ANR:
   u271366, SNR: 2056313), Abdirahman Nuur (ANR: u824009 , SNR: 2057152) and Mathieu
-  Van de Vel (ANR: u130770, SNR: 2050053)'
+  Van de Vel (ANR: u130770, SNR: 2050053)"
 date: "14/04/2021"
 output:
   html_notebook: default
@@ -11,10 +11,118 @@ output:
 # Q1: Data preperation
 
 ```{r}
+library(readxl)
+library(dplyr)
+library(tidyverse)
+library(lubridate) # This package is used for working with dates
+
+options(scipen = 99999)
+
+# Importing the Current Account Balance as a % of GDP of France
+
+CABalance_FR <- read_csv("sourcecode/FRED_bop_france_quarterly.csv", 
+    col_types = cols(DATE = col_date(format = "%d/%m/%Y"), 
+        FRAB6BLTT02STSAQ = col_number())) %>%
+  rename(date = DATE, CAasPercGDP_quart_FR = FRAB6BLTT02STSAQ)
 
 
+# Importing the General Government Debt as a % of GDP. THIS IS NOT IN PERCENT! GOVERNMENT DEBT OF 100%  = 1
+
+GovDebt_FR <- read_csv("sourcecode/OECD_gov_debt_annual.csv", 
+    col_types = cols(LOCATION = col_character(), 
+        INDICATOR = col_skip(), SUBJECT = col_skip(), 
+        MEASURE = col_skip(), FREQUENCY = col_skip(), 
+        TIME = col_date(format = "%Y"), Value = col_number(), 
+        `Flag Codes` = col_skip())) %>%
+  rename(date = TIME) %>%
+  filter(LOCATION == "FRA") %>%
+  mutate(LOCATION = NULL, GovDebt_ann_FR = Value / 100, Value = NULL)
+
+
+# Importing Interest Rate on Government Bonds (10 year), also called "Long term interest rate", in %/annum
+
+# This function transform dates in a quarterly format of "2000-Q1" to 2000-01-01
+QuarterToDate <- function(QuarterlyDate){
+  
+  NumberofQuarter <- substr(QuarterlyDate, 7, 7)
+  
+  Month <- 3 * as.numeric(NumberofQuarter) - 2
+  Month <- ifelse(Month == 10, Month, paste(0, Month))
+  
+  Year <- substr(QuarterlyDate ,1, 4)
+  
+  Date_String <- paste(Year, "-", Month, "-01") %>%
+    str_replace_all(" ", "")
+  
+  Date <- as.Date(Date_String)
+  
+  Date
+}
+
+IntRate_FR <- read_csv("sourcecode/OECD_interest_rates_france_quarterly.csv", 
+    col_types = cols(INDICATOR = col_skip(), 
+        SUBJECT = col_skip(), MEASURE = col_skip(), 
+        FREQUENCY = col_skip(), Value = col_number(), 
+        `Flag Codes` = col_skip())) %>%
+  mutate(date = QuarterToDate(TIME), IntRate_quart_FR = Value / 100, Value = NULL, TIME = NULL, LOCATION = NULL)
+
+
+# Exchange rate against the US dollar
+
+XR_EurUSD <- read_csv("sourcecode/FRED_exchage_rate_quarterly.csv", 
+    col_types = cols(DATE = col_date(format = "%d/%m/%Y"), 
+        DEXUSEU = col_number())) %>%
+  rename(date = DATE, XR_quart_EurUSD = DEXUSEU) %>%
+  mutate(XR_quart_EurUSD = 1/XR_quart_EurUSD)
+
+
+# Total GDP, in millions of US dollars
+
+GDP_FR <- read_csv("sourcecode/FRED_euros_france_gdp_quarterly.csv", 
+    col_types = cols(DATE = col_date(format = "%d/%m/%Y"), 
+        CPMNACSCAB1GQFR = col_number())) %>%
+  mutate(date = DATE, DATE = NULL, GDP_quart_USD_FR = CPMNACSCAB1GQFR * 1000000 / 0.8385451, CPMNACSCAB1GQFR = NULL)
+
+
+# Investment (usually Gross Fixed Capital Formation), in millions of US dollars
+
+Invest_FR <- read_csv("sourcecode/FRED_euros_investments_quarterly.csv", 
+    col_types = cols(DATE = col_date(format = "%d/%m/%Y"), 
+        FRAGFCFQDSMEI = col_number())) %>%
+  mutate(Invest_quart_USD_FR = FRAGFCFQDSMEI / 0.8385451, FRAGFCFQDSMEI = NULL) %>%
+  rename(date = DATE)
+
+
+# Gross national savings as a % of GDP (savings rate). Again, this is in decimals, and not percent
+
+SavingsR_FR <- read_csv("sourcecode/OECD_savings_rate_annual.csv", 
+    col_types = cols(INDICATOR = col_skip(), 
+        SUBJECT = col_skip(), MEASURE = col_skip(), 
+        FREQUENCY = col_skip(), TIME = col_date(format = "%Y"), 
+        Value = col_number(), `Flag Codes` = col_skip())) %>%
+  filter(LOCATION == "FRA") %>%
+  mutate(SavR_ann_FR = Value / 100, LOCATION = NULL, Value = NULL) %>%
+  rename(date = TIME)
+
+
+# Merging them all together
+
+DataFrame_FR <- CABalance_FR %>%
+  full_join(IntRate_FR, by = "date") %>%
+  full_join(XR_EurUSD, by = "date") %>%
+  full_join(GDP_FR, by = "date") %>%
+  full_join(Invest_FR, by = "date") %>%
+  full_join(GovDebt_FR, by = "date") %>%
+  full_join(SavingsR_FR, by = "date") %>%
+  filter(date != "1998-10-01")
+
+print(DataFrame_FR)
+
+DataFrame
 
 ```
+
+
 
 
 # Q2: 
