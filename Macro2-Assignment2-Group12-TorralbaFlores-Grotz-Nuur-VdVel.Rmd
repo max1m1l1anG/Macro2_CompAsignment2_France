@@ -7,8 +7,6 @@ author:
 - Mathieu  Van de Vel (ANR u130770, SNR 2050053)
 date: "14/04/2021"
 output:
-  html_document:
-    df_print: paged
   pdf_document: default
 ---
 
@@ -174,8 +172,6 @@ DF_ann_FR <- DF_FR %>%
 DF_ann_FR %>% 
   kable(caption = "Annual data for France") %>%
   kable_classic(html_font = "Cambria", full_width = TRUE)
-
-DF_ann_FR
 ```
 
 
@@ -202,10 +198,6 @@ ggplot() +
 ## 2. Current account and the exchange rate
 
 ```{r}
-
-DF_FR
-
-
 ggplot() + 
   geom_line(DF_FR, mapping = aes(x = date, y = CAasPercGDP_quart_FR), color = "navyblue") +
   geom_line(DF_FR, mapping = aes(x = date, y = XR_quart_EurUSD*10), color = "dodgerblue1") +
@@ -232,8 +224,6 @@ ggplot() +
 ## 2. Investment rate: Graph
 
 ```{r}
-DF_FR
-
 ggplot() + 
   geom_line(DF_FR_NA, mapping = aes(x = date, y = SavR_ann_FR), color = "navyblue") +
   geom_line(DF_FR, mapping = aes(x = date, y = InvestmentR_Fr), color = "dodgerblue1") +
