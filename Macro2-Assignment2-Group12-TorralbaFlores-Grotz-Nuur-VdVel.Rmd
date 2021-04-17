@@ -209,8 +209,8 @@ colors2 <- c("Current account balance" = "navyblue", "Exchange Rate Eur/USD" = "
 
 ggplot() + 
   geom_line(DF_FR, mapping = aes(x = date, y = CAasPercGDP_quart_FR, color = "Current account balance")) +
-  geom_line(DF_FR, mapping = aes(x = date, y = XR_quart_EurUSD / 10, color = "Exchange Rate Eur/USD")) +
-  scale_y_continuous(labels = scales::percent, sec.axis = sec_axis(~ . *10, name = "Exchange Rate - Eur/Dollar")) +
+  geom_line(DF_FR, mapping = aes(x = date, y = (XR_quart_EurUSD - 1 )/ 10, color = "Exchange Rate Eur/USD")) +
+  scale_y_continuous(labels = scales::percent, limits = c(-0.04, 0.04), sec.axis = sec_axis(~ . *10 + 1, name = "Exchange Rate - Eur/Dollar")) +
   labs(x = "Year", y = "CA as % of GDP", title = "CA as % of GDP and Exchange Rates\nFor France", color = "") +
   scale_color_manual(values = colors2) +
   theme(legend.position="bottom")
