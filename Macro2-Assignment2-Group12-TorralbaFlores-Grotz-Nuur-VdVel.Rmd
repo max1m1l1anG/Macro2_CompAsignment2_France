@@ -165,14 +165,15 @@ DF_ann_FR <- DF_FR %>%
          GovDebt_ann_FR = GovDebt_ann_FR * 100,
          SavR_ann_FR = SavR_ann_FR * 100) %>%
   na.omit() %>%
-  rename(`General government debt as a % of GDP` = GovDebt_ann_FR, 
-         `Gross national savings as a % of GDP` = SavR_ann_FR, 
+  rename(`General_government_debt_as_a_%_of_GDP` = GovDebt_ann_FR, 
+         `Gross_national_savings_as_a_%_of_GDP` = SavR_ann_FR, 
          `Year` = date)
 
 DF_ann_FR %>% 
   kable(caption = "Annual data for France") %>%
   kable_classic(html_font = "Cambria", full_width = TRUE)
 
+DF_ann_FR
 ```
 
 
@@ -181,7 +182,16 @@ DF_ann_FR %>%
 ## 1. Government debt and interest rate
 
 ```{r}
+#Creating plot for Gov Debt & Interest Rate v Time
+#Ommiting NA first
+DF_FR_NA <- DF_FR %>%
+  na.omit
 
+ggplot() + 
+  geom_line(DF_FR_NA, mapping = aes(x = date, y = GovDebt_ann_FR), color = "navyblue") +
+  geom_line(DF_FR, mapping = aes(x = date, y = IntRate_quart_FR*10), color = "dodgerblue1") +
+  scale_y_continuous(labels = scales::percent, name = "Government Debt France Annual in %", sec.axis = sec_axis(~ . * 10, name = "Long Term Interest Rate in %")) +
+  labs(x = "Date", title = "Government Debt and Long Term Interest Rates\nFor France in %")
 
 ```
 
@@ -191,6 +201,14 @@ DF_ann_FR %>%
 
 ```{r}
 
+DF_FR
+
+
+ggplot() + 
+  geom_line(DF_FR, mapping = aes(x = date, y = CAasPercGDP_quart_FR), color = "navyblue") +
+  geom_line(DF_FR, mapping = aes(x = date, y = XR_quart_EurUSD*10), color = "dodgerblue1") +
+  scale_y_continuous(sec.axis = sec_axis(~ . / 10, name = "Exchange Rate - Eur/Dollar")) +
+  labs(x = "Date", y = "CA as % of GDP", title = "CA as % of GDP and Exchange Rates\nFor France")
 
 ```
 
@@ -212,7 +230,13 @@ DF_ann_FR %>%
 ## 2. Investment rate: Graph
 
 ```{r}
+DF_FR
 
+ggplot() + 
+  geom_line(DF_FR_NA, mapping = aes(x = date, y = SavR_ann_FR), color = "navyblue") +
+  geom_line(DF_FR, mapping = aes(x = date, y = InvestmentR_Fr), color = "dodgerblue1") +
+  labs(x = "Date", y = "Investment Rate and Savings Rate\nAs % of GDP", title = "Investment Rate and Savings as % of GDP\nFor France") +
+  scale_y_continuous(labels = scales::percent, breaks = seq(0, 0.25, by = 0.05), limits = c(0, 0.25))
 
 ```
 
