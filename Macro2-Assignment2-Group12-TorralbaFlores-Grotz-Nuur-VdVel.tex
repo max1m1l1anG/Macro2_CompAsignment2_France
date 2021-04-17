@@ -1,0 +1,699 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+  \usepackage{amssymb}
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Computer Assignment 2: France (Group 12)},
+  pdfauthor={Javier Torralba Flores (ANR u146430, SNR 2042878); Maximilian Grotz (ANR u271366, SNR 2056313); Abdirahman Nuur (ANR u824009 , SNR 2057152); Mathieu Van de Vel (ANR u130770, SNR 2050053)},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Computer Assignment 2: France (Group 12)}
+\author{Javier Torralba Flores (ANR u146430, SNR
+2042878) \and Maximilian Grotz (ANR u271366, SNR
+2056313) \and Abdirahman Nuur (ANR u824009 , SNR 2057152) \and Mathieu
+Van de Vel (ANR u130770, SNR 2050053)}
+\date{14/04/2021}
+
+\begin{document}
+\maketitle
+
+\hypertarget{q1-data-preperation}{%
+\section{Q1: Data preperation}\label{q1-data-preperation}}
+
+We will be using the GDP data in euro, as this was the best data we
+found and transforming it using the exchange rate would lead to high
+fluctuation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Here we import all relevant packages and set options}
+
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(lubridate) }\CommentTok{\# This package is used for working with dates}
+\FunctionTok{library}\NormalTok{(knitr) }\CommentTok{\# This package is for nicer tables}
+\FunctionTok{library}\NormalTok{(kableExtra) }\CommentTok{\# Package for even nicer tables.https://cran.r{-}project.org/web/packages/kableExtra/vignettes/awesome\_table\_in\_html.html\#Overview}
+
+\FunctionTok{options}\NormalTok{(}\AttributeTok{scipen =} \DecValTok{999}\NormalTok{) }\CommentTok{\# Disable scientific notation}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Importing the Current Account Balance as a \% of GDP of France}
+
+\NormalTok{CABalance\_FR }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"sourcecode/FRED\_bop\_france\_quarterly.csv"}\NormalTok{, }
+    \AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{col\_date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%d/\%m/\%Y"}\NormalTok{), }
+        \AttributeTok{FRAB6BLTT02STSAQ =} \FunctionTok{col\_number}\NormalTok{())) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{date =}\NormalTok{ DATE, }\AttributeTok{CAasPercGDP\_quart\_FR =}\NormalTok{ FRAB6BLTT02STSAQ)}
+
+
+\CommentTok{\# Importing the General Government Debt as a \% of GDP. }
+\CommentTok{\# THIS IS NOT IN PERCENT! GOVERNMENT DEBT OF 100\%  =\textgreater{} 1}
+
+\NormalTok{GovDebt\_FR }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"sourcecode/OECD\_gov\_debt\_annual.csv"}\NormalTok{, }
+    \AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\AttributeTok{LOCATION =} \FunctionTok{col\_character}\NormalTok{(), }
+        \AttributeTok{INDICATOR =} \FunctionTok{col\_skip}\NormalTok{(), }\AttributeTok{SUBJECT =} \FunctionTok{col\_skip}\NormalTok{(), }
+        \AttributeTok{MEASURE =} \FunctionTok{col\_skip}\NormalTok{(), }\AttributeTok{FREQUENCY =} \FunctionTok{col\_skip}\NormalTok{(), }
+        \AttributeTok{TIME =} \FunctionTok{col\_date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%Y"}\NormalTok{), }\AttributeTok{Value =} \FunctionTok{col\_number}\NormalTok{(), }
+        \StringTok{\textasciigrave{}}\AttributeTok{Flag Codes}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{col\_skip}\NormalTok{())) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{date =}\NormalTok{ TIME) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(LOCATION }\SpecialCharTok{==} \StringTok{"FRA"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{LOCATION =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{GovDebt\_ann\_FR =}\NormalTok{ Value }\SpecialCharTok{/} \DecValTok{100}\NormalTok{, }\AttributeTok{Value =} \ConstantTok{NULL}\NormalTok{)}
+
+
+\CommentTok{\# This function transform dates in a quarterly format of "2000{-}Q1" to 2000{-}01{-}01}
+\NormalTok{QuarterToDate }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(QuarterlyDate)\{}
+  
+\NormalTok{  NumberofQuarter }\OtherTok{\textless{}{-}} \FunctionTok{substr}\NormalTok{(QuarterlyDate, }\DecValTok{7}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+  
+\NormalTok{  Month }\OtherTok{\textless{}{-}} \DecValTok{3} \SpecialCharTok{*} \FunctionTok{as.numeric}\NormalTok{(NumberofQuarter) }\SpecialCharTok{{-}} \DecValTok{2}
+\NormalTok{  Month }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(Month }\SpecialCharTok{==} \DecValTok{10}\NormalTok{, Month, }\FunctionTok{paste}\NormalTok{(}\DecValTok{0}\NormalTok{, Month))}
+  
+\NormalTok{  Year }\OtherTok{\textless{}{-}} \FunctionTok{substr}\NormalTok{(QuarterlyDate, }\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+  
+\NormalTok{  Date\_String }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(Year, }\StringTok{"{-}"}\NormalTok{, Month, }\StringTok{"{-}01"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{str\_replace\_all}\NormalTok{(}\StringTok{" "}\NormalTok{, }\StringTok{""}\NormalTok{)}
+  
+\NormalTok{  Date }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(Date\_String)}
+  
+\NormalTok{  Date}
+\NormalTok{\}}
+
+\CommentTok{\# Importing Interest Rate on Government Bonds (10 year), }
+\CommentTok{\# also called "Long term interest rate", in \%/annum}
+
+\NormalTok{IntRate\_FR }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"sourcecode/OECD\_interest\_rates\_france\_quarterly.csv"}\NormalTok{, }
+    \AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\AttributeTok{INDICATOR =} \FunctionTok{col\_skip}\NormalTok{(), }
+        \AttributeTok{SUBJECT =} \FunctionTok{col\_skip}\NormalTok{(), }\AttributeTok{MEASURE =} \FunctionTok{col\_skip}\NormalTok{(), }
+        \AttributeTok{FREQUENCY =} \FunctionTok{col\_skip}\NormalTok{(), }\AttributeTok{Value =} \FunctionTok{col\_number}\NormalTok{(), }
+        \StringTok{\textasciigrave{}}\AttributeTok{Flag Codes}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{col\_skip}\NormalTok{())) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{date =} \FunctionTok{QuarterToDate}\NormalTok{(TIME),}
+         \AttributeTok{IntRate\_quart\_FR =}\NormalTok{ Value }\SpecialCharTok{/} \DecValTok{100}\NormalTok{,}
+         \AttributeTok{Value =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{TIME =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{LOCATION =} \ConstantTok{NULL}\NormalTok{)}
+
+
+\CommentTok{\# Exchange rate against the US dollar}
+
+\NormalTok{XR\_EurUSD }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"sourcecode/FRED\_exchage\_rate\_quarterly.csv"}\NormalTok{, }
+    \AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{col\_date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%d/\%m/\%Y"}\NormalTok{), }
+        \AttributeTok{DEXUSEU =} \FunctionTok{col\_number}\NormalTok{())) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{date =}\NormalTok{ DATE, }\AttributeTok{XR\_quart\_EurUSD =}\NormalTok{ DEXUSEU) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{XR\_quart\_EurUSD =} \DecValTok{1}\SpecialCharTok{/}\NormalTok{XR\_quart\_EurUSD)}
+
+
+\CommentTok{\# Total GDP, in millions of US dollars}
+
+\NormalTok{GDP\_FR }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"sourcecode/FRED\_euros\_france\_gdp\_quarterly.csv"}\NormalTok{, }
+    \AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{col\_date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%d/\%m/\%Y"}\NormalTok{), }
+        \AttributeTok{CPMNACSCAB1GQFR =} \FunctionTok{col\_number}\NormalTok{())) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{date =}\NormalTok{ DATE, }\AttributeTok{GDP\_quart\_Millionseur\_FR =}\NormalTok{ CPMNACSCAB1GQFR,}
+         \AttributeTok{CPMNACSCAB1GQFR =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{DATE =} \ConstantTok{NULL}\NormalTok{)}
+
+
+\CommentTok{\# Investment (usually Gross Fixed Capital Formation), in millions of US dollars}
+
+\NormalTok{Invest\_FR }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"sourcecode/FRED\_euros\_investments\_quarterly.csv"}\NormalTok{, }
+    \AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\AttributeTok{DATE =} \FunctionTok{col\_date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%d/\%m/\%Y"}\NormalTok{), }
+        \AttributeTok{FRAGFCFQDSMEI =} \FunctionTok{col\_number}\NormalTok{())) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Invest\_quart\_Millionseur\_FR =}\NormalTok{ FRAGFCFQDSMEI }\SpecialCharTok{/} \DecValTok{1000000}\NormalTok{,}
+         \AttributeTok{FRAGFCFQDSMEI =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{date =}\NormalTok{ DATE)}
+
+
+\CommentTok{\# Gross national savings as a \% of GDP (savings rate). }
+\CommentTok{\# Again, this is in decimals, and not percent!}
+
+\NormalTok{SavingsR\_FR }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"sourcecode/OECD\_savings\_rate\_annual.csv"}\NormalTok{, }
+    \AttributeTok{col\_types =} \FunctionTok{cols}\NormalTok{(}\AttributeTok{INDICATOR =} \FunctionTok{col\_skip}\NormalTok{(), }
+        \AttributeTok{SUBJECT =} \FunctionTok{col\_skip}\NormalTok{(), }\AttributeTok{MEASURE =} \FunctionTok{col\_skip}\NormalTok{(), }
+        \AttributeTok{FREQUENCY =} \FunctionTok{col\_skip}\NormalTok{(), }\AttributeTok{TIME =} \FunctionTok{col\_date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%Y"}\NormalTok{), }
+        \AttributeTok{Value =} \FunctionTok{col\_number}\NormalTok{(), }\StringTok{\textasciigrave{}}\AttributeTok{Flag Codes}\StringTok{\textasciigrave{}} \OtherTok{=} \FunctionTok{col\_skip}\NormalTok{())) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(LOCATION }\SpecialCharTok{==} \StringTok{"FRA"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{SavR\_ann\_FR =}\NormalTok{ Value }\SpecialCharTok{/} \DecValTok{100}\NormalTok{, }\AttributeTok{LOCATION =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{Value =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\AttributeTok{date =}\NormalTok{ TIME)}
+
+
+\CommentTok{\# Merging them all together}
+
+\NormalTok{DF\_FR }\OtherTok{\textless{}{-}}\NormalTok{ CABalance\_FR }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{full\_join}\NormalTok{(IntRate\_FR, }\AttributeTok{by =} \StringTok{"date"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{full\_join}\NormalTok{(XR\_EurUSD, }\AttributeTok{by =} \StringTok{"date"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{full\_join}\NormalTok{(GDP\_FR, }\AttributeTok{by =} \StringTok{"date"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{full\_join}\NormalTok{(Invest\_FR, }\AttributeTok{by =} \StringTok{"date"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{full\_join}\NormalTok{(GovDebt\_FR, }\AttributeTok{by =} \StringTok{"date"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{full\_join}\NormalTok{(SavingsR\_FR, }\AttributeTok{by =} \StringTok{"date"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(date }\SpecialCharTok{!=} \StringTok{"1998{-}10{-}01"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{InvestmentR\_Fr =}\NormalTok{ Invest\_quart\_Millionseur\_FR}\SpecialCharTok{/}\NormalTok{GDP\_quart\_Millionseur\_FR)}
+
+
+\CommentTok{\# Creating and printing a table with all the quarterly data}
+
+\NormalTok{DF\_quart\_FR }\OtherTok{\textless{}{-}}\NormalTok{ DF\_FR }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{c}\NormalTok{(GovDebt\_ann\_FR, SavR\_ann\_FR)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{date =} \FunctionTok{format}\NormalTok{(}\FunctionTok{as.Date}\NormalTok{(date), }\StringTok{"\%Y{-}\%m"}\NormalTok{), }\AttributeTok{InvestmentR\_Fr =}\NormalTok{ InvestmentR\_Fr }\SpecialCharTok{*} \DecValTok{100}\NormalTok{)}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Current Account Balance as \% of GDP}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ CAasPercGDP\_quart\_FR,}
+          \StringTok{\textasciigrave{}}\AttributeTok{Inflation Rate}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ IntRate\_quart\_FR,}
+          \StringTok{\textasciigrave{}}\AttributeTok{Exchange Rate €/USD}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ XR\_quart\_EurUSD, }
+          \StringTok{\textasciigrave{}}\AttributeTok{GDP in millions of €}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ GDP\_quart\_Millionseur\_FR, }
+          \StringTok{\textasciigrave{}}\AttributeTok{Invesment in millions of €}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ Invest\_quart\_Millionseur\_FR,}
+          \StringTok{\textasciigrave{}}\AttributeTok{Investment rate as \% of GDP}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ InvestmentR\_Fr,}
+         \StringTok{\textasciigrave{}}\AttributeTok{Date (Year{-}Month)}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ date}
+\NormalTok{          ) }
+
+\NormalTok{DF\_quart\_FR }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Quarterly data for France"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_classic}\NormalTok{(}\AttributeTok{html\_font =} \StringTok{"Cambria"}\NormalTok{, }\AttributeTok{full\_width =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{font\_size =} \FloatTok{4.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-2}Quarterly data for France}
+\centering
+\fontsize{4.5}{6.5}\selectfont
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X}
+\hline
+Date (Year-Month) & Current Account Balance as \% of GDP & Inflation Rate & Exchange Rate €/USD & GDP in millions of € & Invesment in millions of € & Investment rate as \% of GDP\\
+\hline
+1999-01 & 4.3843903 & 0.0394417 & 0.8925227 & 344117 & 70478 & 20.48082\\
+\hline
+1999-04 & 4.8479559 & 0.0420357 & 0.9463116 & 347464 & 72075 & 20.74316\\
+\hline
+1999-07 & 2.2295649 & 0.0500457 & 0.9530362 & 351727 & 73845 & 20.99498\\
+\hline
+1999-10 & 2.2150481 & 0.0528283 & 0.9644766 & 356592 & 74774 & 20.96906\\
+\hline
+2000-01 & 1.5849975 & 0.0557097 & 1.0143425 & 362660 & 76970 & 21.22374\\
+\hline
+2000-04 & 1.9326983 & 0.0538640 & 1.0713144 & 367789 & 78600 & 21.37095\\
+\hline
+2000-07 & 0.3160912 & 0.0539280 & 1.1059345 & 372166 & 80714 & 21.68763\\
+\hline
+2000-10 & 0.5900080 & 0.0522770 & 1.1518233 & 376980 & 82060 & 21.76773\\
+\hline
+2001-01 & 1.7772266 & 0.0490307 & 1.0846480 & 380845 & 82467 & 21.65369\\
+\hline
+2001-04 & 1.2125354 & 0.0511897 & 1.1446579 & 383539 & 82632 & 21.54461\\
+\hline
+2001-07 & 1.3896723 & 0.0501560 & 1.1226068 & 386507 & 83310 & 21.55459\\
+\hline
+2001-10 & 1.9134471 & 0.0472020 & 1.1171453 & 388555 & 82894 & 21.33392\\
+\hline
+2002-01 & 1.4908774 & 0.0505460 & 1.1402082 & 392514 & 82625 & 21.05020\\
+\hline
+2002-04 & 1.1986257 & 0.0520337 & 1.0886631 & 395640 & 82682 & 20.89829\\
+\hline
+2002-07 & 0.8123933 & 0.0469693 & 1.0160746 & 399012 & 83542 & 20.93721\\
+\hline
+2002-10 & 1.0950510 & 0.0448997 & 0.9997210 & 401288 & 84117 & 20.96175\\
+\hline
+2003-01 & 0.9023040 & 0.0411140 & 0.9316889 & 403234 & 84730 & 21.01261\\
+\hline
+2003-04 & 0.3858072 & 0.0393603 & 0.8805736 & 404603 & 85027 & 21.01492\\
+\hline
+2003-07 & 0.7656657 & 0.0413373 & 0.8877829 & 409627 & 86474 & 21.11042\\
+\hline
+2003-10 & 1.2776413 & 0.0434240 & 0.8389228 & 414298 & 87009 & 21.00155\\
+\hline
+2004-01 & 1.1807017 & 0.0410590 & 0.8000692 & 419847 & 88890 & 21.17200\\
+\hline
+2004-04 & 0.4774014 & 0.0430660 & 0.8301123 & 423647 & 90435 & 21.34678\\
+\hline
+2004-07 & 0.3557276 & 0.0415890 & 0.8178893 & 426215 & 91196 & 21.39671\\
+\hline
+2004-10 & 0.1348405 & 0.0382527 & 0.7697562 & 431768 & 92734 & 21.47774\\
+\hline
+2005-01 & 0.2788261 & 0.0364193 & 0.7626489 & 435001 & 93764 & 21.55489\\
+\hline
+2005-04 & -0.1390665 & 0.0337377 & 0.7941875 & 438435 & 95310 & 21.73868\\
+\hline
+2005-07 & 0.3455717 & 0.0323350 & 0.8199746 & 441972 & 96752 & 21.89098\\
+\hline
+2005-10 & -0.0656630 & 0.0338857 & 0.8410278 & 448518 & 98537 & 21.96946\\
+\hline
+2006-01 & 0.1408078 & 0.0351250 & 0.8310780 & 453785 & 100428 & 22.13119\\
+\hline
+2006-04 & -0.3136958 & 0.0398703 & 0.7951476 & 460637 & 103263 & 22.41744\\
+\hline
+2006-07 & 0.5670738 & 0.0389737 & 0.7848550 & 463892 & 104645 & 22.55805\\
+\hline
+2006-10 & 0.6059834 & 0.0378607 & 0.7752927 & 471205 & 107074 & 22.72344\\
+\hline
+2007-01 & 0.6308237 & 0.0405407 & 0.7628075 & 477008 & 109163 & 22.88494\\
+\hline
+2007-04 & -0.1652836 & 0.0438790 & 0.7416025 & 483601 & 111688 & 23.09507\\
+\hline
+2007-07 & -0.3437623 & 0.0444283 & 0.7273984 & 488760 & 113982 & 23.32065\\
+\hline
+2007-10 & -0.5084232 & 0.0432800 & 0.6904967 & 493210 & 115657 & 23.44985\\
+\hline
+2008-01 & -0.6819473 & 0.0408287 & 0.6663772 & 499044 & 118276 & 23.70052\\
+\hline
+2008-04 & -1.0176915 & 0.0446983 & 0.6399917 & 499558 & 119017 & 23.82446\\
+\hline
+2008-07 & -0.7171070 & 0.0448467 & 0.6653305 & 498729 & 118548 & 23.77002\\
+\hline
+2008-10 & -0.3665779 & 0.0389993 & 0.7574776 & 493593 & 113934 & 23.08258\\
+\hline
+2009-01 & -0.9333621 & 0.0364237 & 0.7671644 & 484599 & 108793 & 22.45011\\
+\hline
+2009-04 & -1.0536778 & 0.0378777 & 0.7342725 & 482344 & 106466 & 22.07263\\
+\hline
+2009-07 & -0.1551247 & 0.0363573 & 0.6990924 & 482260 & 105505 & 21.87720\\
+\hline
+2009-10 & -0.0605930 & 0.0352940 & 0.6774364 & 487648 & 106705 & 21.88156\\
+\hline
+2010-01 & -1.0327454 & 0.0348373 & 0.7235384 & 491370 & 107600 & 21.89796\\
+\hline
+2010-04 & -1.1858214 & 0.0318350 & 0.7849419 & 495993 & 109348 & 22.04628\\
+\hline
+2010-07 & -0.4467889 & 0.0278160 & 0.7729039 & 501089 & 110992 & 22.15016\\
+\hline
+2010-10 & 0.1286623 & 0.0301923 & 0.7360465 & 505200 & 112330 & 22.23476\\
+\hline
+2011-01 & -1.6412046 & 0.0355193 & 0.7299863 & 511232 & 113312 & 22.16450\\
+\hline
+2011-04 & -1.8491211 & 0.0353657 & 0.6944874 & 512641 & 114766 & 22.38721\\
+\hline
+2011-07 & -0.6333156 & 0.0300943 & 0.7080868 & 515339 & 115532 & 22.41864\\
+\hline
+2011-10 & 0.6643889 & 0.0318630 & 0.7420500 & 518136 & 117550 & 22.68709\\
+\hline
+2012-01 & -0.9643651 & 0.0304990 & 0.7621117 & 520378 & 117693 & 22.61683\\
+\hline
+2012-04 & -1.6002511 & 0.0277157 & 0.7790873 & 521185 & 117224 & 22.49182\\
+\hline
+2012-07 & -0.9006000 & 0.0221060 & 0.7995127 & 523736 & 117272 & 22.39143\\
+\hline
+2012-10 & -0.3964272 & 0.0211190 & 0.7706066 & 523834 & 117130 & 22.36014\\
+\hline
+2013-01 & -0.2134870 & 0.0216027 & 0.7577772 & 525342 & 116349 & 22.14729\\
+\hline
+2013-04 & -0.5736621 & 0.0196210 & 0.7654349 & 529783 & 116589 & 22.00693\\
+\hline
+2013-07 & -1.1343437 & 0.0236500 & 0.7546155 & 530170 & 116656 & 22.00351\\
+\hline
+2013-10 & -0.1167983 & 0.0233003 & 0.7342457 & 532841 & 117668 & 22.08314\\
+\hline
+2014-01 & -0.7891905 & 0.0226290 & 0.7296581 & 535238 & 117833 & 22.01507\\
+\hline
+2014-04 & -2.0642416 & 0.0185867 & 0.7290747 & 535848 & 117277 & 21.88624\\
+\hline
+2014-07 & -0.7180165 & 0.0143873 & 0.7546947 & 538574 & 117483 & 21.81372\\
+\hline
+2014-10 & -0.2587609 & 0.0110547 & 0.8001899 & 541699 & 116961 & 21.59151\\
+\hline
+2015-01 & 0.1386293 & 0.0059340 & 0.8892375 & 546839 & 117750 & 21.53285\\
+\hline
+2015-04 & -0.0859321 & 0.0083977 & 0.9034508 & 547600 & 116790 & 21.32761\\
+\hline
+2015-07 & -0.4265375 & 0.0104110 & 0.8993804 & 551067 & 118151 & 21.44041\\
+\hline
+2015-10 & -1.0906565 & 0.0089317 & 0.9129152 & 552787 & 119934 & 21.69624\\
+\hline
+2016-01 & -0.6819375 & 0.0064813 & 0.9062168 & 557860 & 121077 & 21.70383\\
+\hline
+2016-04 & -0.3702019 & 0.0047123 & 0.8853095 & 555959 & 120940 & 21.75340\\
+\hline
+2016-07 & -0.6181651 & 0.0016950 & 0.8958278 & 557486 & 121575 & 21.80772\\
+\hline
+2016-10 & -0.2777243 & 0.0058267 & 0.9276706 & 561128 & 123171 & 21.95061\\
+\hline
+2017-01 & -1.6937339 & 0.0097180 & 0.9380113 & 567132 & 126956 & 22.38562\\
+\hline
+2017-04 & -0.7551960 & 0.0078447 & 0.9084470 & 572562 & 128451 & 22.43443\\
+\hline
+2017-07 & -0.0252646 & 0.0074853 & 0.8506995 & 576959 & 130098 & 22.54892\\
+\hline
+2017-10 & -0.6077256 & 0.0073463 & 0.8490536 & 581934 & 131790 & 22.64690\\
+\hline
+2018-01 & -1.3808523 & 0.0089200 & 0.8137252 & 585024 & 132470 & 22.64352\\
+\hline
+2018-04 & -0.4897966 & 0.0077113 & 0.8387722 & 587880 & 134223 & 22.83170\\
+\hline
+2018-07 & 0.2058543 & 0.0071187 & 0.8599262 & 592206 & 136528 & 23.05414\\
+\hline
+2018-10 & -0.5818429 & 0.0076143 & 0.8761017 & 597300 & 138123 & 23.12456\\
+\hline
+2019-01 & -1.6097991 & 0.0054413 & 0.8807719 & 602638 & 140292 & 23.27965\\
+\hline
+2019-04 & 1.3553001 & 0.0025180 & 0.8899234 & 605984 & 143004 & 23.59864\\
+\hline
+2019-07 & -1.1091373 & -0.0022793 & 0.8992465 & 608584 & 144970 & 23.82087\\
+\hline
+2019-10 & -1.3019662 & -0.0004720 & 0.9029635 & 609740 & 145772 & 23.90724\\
+\hline
+2020-01 & -2.6078248 & -0.0008087 & 0.9072750 & 580233 & 131148 & 22.60264\\
+\hline
+2020-04 & -0.8781318 & -0.0000543 & 0.9077911 & 515406 & 111945 & 21.71977\\
+\hline
+2020-07 & -2.9306503 & -0.0017543 & 0.8548344 & 593490 & 138276 & 23.29879\\
+\hline
+2020-10 & NA & -0.0031933 & 0.8385451 & 588053 & 140339 & 23.86503\\
+\hline
+\end{tabu}
+\end{table}
+\newpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Creating and printing atable with all the annual data}
+
+\NormalTok{DF\_ann\_FR }\OtherTok{\textless{}{-}}\NormalTok{ DF\_FR }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{c}\NormalTok{(date, GovDebt\_ann\_FR, SavR\_ann\_FR)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{date =} \FunctionTok{format}\NormalTok{(}\FunctionTok{as.Date}\NormalTok{(date), }\StringTok{"\%Y"}\NormalTok{),}
+         \AttributeTok{GovDebt\_ann\_FR =}\NormalTok{ GovDebt\_ann\_FR }\SpecialCharTok{*} \DecValTok{100}\NormalTok{,}
+         \AttributeTok{SavR\_ann\_FR =}\NormalTok{ SavR\_ann\_FR }\SpecialCharTok{*} \DecValTok{100}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{na.omit}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{General\_government\_debt\_as\_a\_\%\_of\_GDP}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ GovDebt\_ann\_FR, }
+         \StringTok{\textasciigrave{}}\AttributeTok{Gross\_national\_savings\_as\_a\_\%\_of\_GDP}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ SavR\_ann\_FR, }
+         \StringTok{\textasciigrave{}}\AttributeTok{Year}\StringTok{\textasciigrave{}} \OtherTok{=}\NormalTok{ date)}
+
+\NormalTok{DF\_ann\_FR }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Annual data for France"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_classic}\NormalTok{(}\AttributeTok{html\_font =} \StringTok{"Cambria"}\NormalTok{, }\AttributeTok{full\_width =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-3}Annual data for France}
+\centering
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X>{\raggedleft}X}
+\hline
+Year & General\_government\_debt\_as\_a\_\%\_of\_GDP & Gross\_national\_savings\_as\_a\_\%\_of\_GDP\\
+\hline
+1999 & 74.01518 & 9.118922\\
+\hline
+2000 & 72.42918 & 8.563187\\
+\hline
+2001 & 71.47308 & 8.497075\\
+\hline
+2002 & 75.16156 & 7.180433\\
+\hline
+2003 & 79.07757 & 6.584242\\
+\hline
+2004 & 80.54945 & 6.848104\\
+\hline
+2005 & 82.14224 & 6.420674\\
+\hline
+2006 & 77.26933 & 6.810266\\
+\hline
+2007 & 75.94181 & 7.096520\\
+\hline
+2008 & 82.50349 & 6.288158\\
+\hline
+2009 & 97.57310 & 3.085278\\
+\hline
+2010 & 100.99530 & 3.391840\\
+\hline
+2011 & 103.80660 & 4.203814\\
+\hline
+2012 & 111.93820 & 3.441778\\
+\hline
+2013 & 112.46760 & 3.285913\\
+\hline
+2014 & 120.15510 & 3.451633\\
+\hline
+2015 & 120.82520 & 4.389310\\
+\hline
+2016 & 123.67070 & 4.084366\\
+\hline
+2017 & 122.94420 & 4.697851\\
+\hline
+2018 & 121.35990 & 4.781235\\
+\hline
+2019 & 123.96430 & 4.787386\\
+\hline
+\end{tabu}
+\end{table}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DF\_ann\_FR}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 21 x 3
+##    Year  `General_government_debt_as_a_%_of_~ `Gross_national_savings_as_a_%_of~
+##    <chr>                                <dbl>                              <dbl>
+##  1 1999                                  74.0                               9.12
+##  2 2000                                  72.4                               8.56
+##  3 2001                                  71.5                               8.50
+##  4 2002                                  75.2                               7.18
+##  5 2003                                  79.1                               6.58
+##  6 2004                                  80.5                               6.85
+##  7 2005                                  82.1                               6.42
+##  8 2006                                  77.3                               6.81
+##  9 2007                                  75.9                               7.10
+## 10 2008                                  82.5                               6.29
+## # ... with 11 more rows
+\end{verbatim}
+
+\hypertarget{q2-government-debt-interest-rate-current-account-and-the-exchange-rate}{%
+\section{Q2: Government debt, interest rate, current account and the
+exchange
+rate}\label{q2-government-debt-interest-rate-current-account-and-the-exchange-rate}}
+
+\hypertarget{government-debt-and-interest-rate}{%
+\subsection{1. Government debt and interest
+rate}\label{government-debt-and-interest-rate}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Creating plot for Gov Debt \& Interest Rate v Time}
+\CommentTok{\#Ommiting NA first}
+\NormalTok{DF\_FR\_NA }\OtherTok{\textless{}{-}}\NormalTok{ DF\_FR }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  na.omit}
+
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{(DF\_FR\_NA, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ GovDebt\_ann\_FR), }\AttributeTok{color =} \StringTok{"navyblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(DF\_FR, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ IntRate\_quart\_FR}\SpecialCharTok{*}\DecValTok{10}\NormalTok{), }\AttributeTok{color =} \StringTok{"dodgerblue1"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{percent, }\AttributeTok{name =} \StringTok{"Government Debt France Annual in \%"}\NormalTok{, }\AttributeTok{sec.axis =} \FunctionTok{sec\_axis}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ . }\SpecialCharTok{*} \DecValTok{10}\NormalTok{, }\AttributeTok{name =} \StringTok{"Long Term Interest Rate in \%"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Date"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Government Debt and Long Term Interest Rates}\SpecialCharTok{\textbackslash{}n}\StringTok{For France in \%"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Macro2-Assignment2-Group12-TorralbaFlores-Grotz-Nuur-VdVel_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\hypertarget{current-account-and-the-exchange-rate}{%
+\subsection{2. Current account and the exchange
+rate}\label{current-account-and-the-exchange-rate}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DF\_FR}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 88 x 9
+##    date       CAasPercGDP_qua~ IntRate_quart_FR XR_quart_EurUSD GDP_quart_Milli~
+##    <date>                <dbl>            <dbl>           <dbl>            <dbl>
+##  1 1999-01-01            4.38            0.0394           0.893           344117
+##  2 1999-04-01            4.85            0.0420           0.946           347464
+##  3 1999-07-01            2.23            0.0500           0.953           351727
+##  4 1999-10-01            2.22            0.0528           0.964           356592
+##  5 2000-01-01            1.58            0.0557           1.01            362660
+##  6 2000-04-01            1.93            0.0539           1.07            367789
+##  7 2000-07-01            0.316           0.0539           1.11            372166
+##  8 2000-10-01            0.590           0.0523           1.15            376980
+##  9 2001-01-01            1.78            0.0490           1.08            380845
+## 10 2001-04-01            1.21            0.0512           1.14            383539
+## # ... with 78 more rows, and 4 more variables:
+## #   Invest_quart_Millionseur_FR <dbl>, GovDebt_ann_FR <dbl>, SavR_ann_FR <dbl>,
+## #   InvestmentR_Fr <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{(DF\_FR, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ CAasPercGDP\_quart\_FR), }\AttributeTok{color =} \StringTok{"navyblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(DF\_FR, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ XR\_quart\_EurUSD}\SpecialCharTok{*}\DecValTok{10}\NormalTok{), }\AttributeTok{color =} \StringTok{"dodgerblue1"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{sec.axis =} \FunctionTok{sec\_axis}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ . }\SpecialCharTok{/} \DecValTok{10}\NormalTok{, }\AttributeTok{name =} \StringTok{"Exchange Rate {-} Eur/Dollar"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Date"}\NormalTok{, }\AttributeTok{y =} \StringTok{"CA as \% of GDP"}\NormalTok{, }\AttributeTok{title =} \StringTok{"CA as \% of GDP and Exchange Rates}\SpecialCharTok{\textbackslash{}n}\StringTok{For France"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 1 row(s) containing missing values (geom_path).
+\end{verbatim}
+
+\includegraphics{Macro2-Assignment2-Group12-TorralbaFlores-Grotz-Nuur-VdVel_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\hypertarget{relevant-events-and-policy-responses}{%
+\subsection{3. Relevant events and policy
+responses}\label{relevant-events-and-policy-responses}}
+
+\hypertarget{currency-union-and-its-effects}{%
+\subsection{4. Currency union and its
+effects}\label{currency-union-and-its-effects}}
+
+\hypertarget{q3-investment-rate-and-the-feldstein-horioka-puzzle}{%
+\section{Q3: Investment rate and the Feldstein-Horioka
+puzzle}\label{q3-investment-rate-and-the-feldstein-horioka-puzzle}}
+
+\hypertarget{investment-rate}{%
+\subsection{1. Investment rate}\label{investment-rate}}
+
+\hypertarget{investment-rate-graph}{%
+\subsection{2. Investment rate: Graph}\label{investment-rate-graph}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DF\_FR}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 88 x 9
+##    date       CAasPercGDP_qua~ IntRate_quart_FR XR_quart_EurUSD GDP_quart_Milli~
+##    <date>                <dbl>            <dbl>           <dbl>            <dbl>
+##  1 1999-01-01            4.38            0.0394           0.893           344117
+##  2 1999-04-01            4.85            0.0420           0.946           347464
+##  3 1999-07-01            2.23            0.0500           0.953           351727
+##  4 1999-10-01            2.22            0.0528           0.964           356592
+##  5 2000-01-01            1.58            0.0557           1.01            362660
+##  6 2000-04-01            1.93            0.0539           1.07            367789
+##  7 2000-07-01            0.316           0.0539           1.11            372166
+##  8 2000-10-01            0.590           0.0523           1.15            376980
+##  9 2001-01-01            1.78            0.0490           1.08            380845
+## 10 2001-04-01            1.21            0.0512           1.14            383539
+## # ... with 78 more rows, and 4 more variables:
+## #   Invest_quart_Millionseur_FR <dbl>, GovDebt_ann_FR <dbl>, SavR_ann_FR <dbl>,
+## #   InvestmentR_Fr <dbl>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{(DF\_FR\_NA, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ SavR\_ann\_FR), }\AttributeTok{color =} \StringTok{"navyblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(DF\_FR, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ date, }\AttributeTok{y =}\NormalTok{ InvestmentR\_Fr), }\AttributeTok{color =} \StringTok{"dodgerblue1"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Date"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Investment Rate and Savings Rate}\SpecialCharTok{\textbackslash{}n}\StringTok{As \% of GDP"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Investment Rate and Savings as \% of GDP}\SpecialCharTok{\textbackslash{}n}\StringTok{For France"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{percent, }\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.25}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.05}\NormalTok{), }\AttributeTok{limits =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.25}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Macro2-Assignment2-Group12-TorralbaFlores-Grotz-Nuur-VdVel_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\hypertarget{feldstein-horioka-puzzle}{%
+\subsection{3. Feldstein-Horioka
+puzzle}\label{feldstein-horioka-puzzle}}
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\end{document}
