@@ -182,7 +182,7 @@ DF_ann_FR %>%
 
 ## 1. Government debt and interest rate
 
-```{r}
+```{r, warning = FALSE}
 #Creating plot for Gov Debt & Interest Rate v Time
 #Ommiting NA first
 DF_FR_NA <- DF_FR %>%
@@ -234,7 +234,7 @@ ggplot() +
 
 ## 2. Investment rate: Graph
 
-```{r}
+```{r, warning = FALSE}
 colors3 <- c("Savings Rate" = "navyblue", "Investment Rate" = "dodgerblue1")
 
 ggplot() + 
@@ -243,7 +243,8 @@ ggplot() +
   labs(x = "Year", y = "% of GDP", title = "Investment and Savings Rate as % of GDP\nFor France", color = "") +
   scale_y_continuous(labels = scales::percent, breaks = seq(0, 0.25, by = 0.05), limits = c(0, 0.25)) +
   scale_color_manual(values = colors3) +
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  scale_x_date(limits = c(as.Date("1999-01-01"), as.Date("2019-06-01")))
   
 
 ```
