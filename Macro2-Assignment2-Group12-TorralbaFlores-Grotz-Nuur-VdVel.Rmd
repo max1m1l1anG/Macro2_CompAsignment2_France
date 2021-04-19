@@ -161,6 +161,7 @@ DF_quart_FR %>%
 
 ```{r}
 # Creating and printing atable with all the annual data
+#DELETE UNDERSCORES
 
 DF_ann_FR <- DF_FR %>%
   select(c(date, GovDebt_ann_FR, SavR_ann_FR)) %>%
@@ -168,8 +169,8 @@ DF_ann_FR <- DF_FR %>%
          GovDebt_ann_FR = GovDebt_ann_FR * 100,
          SavR_ann_FR = SavR_ann_FR * 100) %>%
   na.omit() %>%
-  rename(`General_government_debt_as_a_%_of_GDP` = GovDebt_ann_FR, 
-         `Gross_national_savings_as_a_%_of_GDP` = SavR_ann_FR, 
+  rename(`General government debt as a % of GDP` = GovDebt_ann_FR, 
+         `Gross national savings as a % of GDP` = SavR_ann_FR, 
          `Year` = date)
 
 DF_ann_FR %>% 
