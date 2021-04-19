@@ -194,10 +194,11 @@ colors1 <- c("Government debt" = "navyblue", "Long term interest rate" = "dodger
 ggplot() + 
   geom_line(DF_FR_NA, mapping = aes(x = date, y = GovDebt_ann_FR, color = "Government debt")) +
   geom_line(DF_FR, mapping = aes(x = date, y = IntRate_quart_FR*10, color = "Long term interest rate")) +
-  scale_y_continuous(labels = scales::percent, name = "Government Debt (annually in %)", sec.axis = sec_axis(~ . /10, name = "Long Term Interest Rate (quarterly in %)", labels = scales::percent)) +
+  scale_y_continuous(labels = scales::percent, name = "Government Debt (annually in % of GDP)", sec.axis = sec_axis(~ . /10, name = "Long Term Interest Rate (quarterly in %)", labels = scales::percent)) +
   labs(x = "Year", title = "Government Debt and Long Term Interest Rates\nFor France in %", color = "") +
   scale_color_manual(values = colors1) +
-  theme(legend.position="bottom")
+  theme(legend.position="bottom") +
+  scale_x_date(limits = c(as.Date("1999-01-01"), as.Date("2019-01-01")))
 
 ```
 
@@ -210,8 +211,8 @@ colors2 <- c("Current account balance" = "navyblue", "Exchange Rate Eur/USD" = "
 
 ggplot() + 
   geom_line(DF_FR, mapping = aes(x = date, y = CAasPercGDP_quart_FR, color = "Current account balance")) +
-  geom_line(DF_FR, mapping = aes(x = date, y = (XR_quart_EurUSD - 1 )/ 10, color = "Exchange Rate Eur/USD")) +
-  scale_y_continuous(labels = scales::percent, limits = c(-0.04, 0.04), sec.axis = sec_axis(~ . *10 + 1, name = "Exchange Rate - Eur/Dollar")) +
+  geom_line(DF_FR, mapping = aes(x = date, y = (XR_quart_EurUSD - .8 )/ 10, color = "Exchange Rate Eur/USD")) +
+  scale_y_continuous(labels = scales::percent, limits = c(-0.04, 0.04), sec.axis = sec_axis(~ . *10 + .8, name = "Exchange Rate - Eur/Dollar")) +
   labs(x = "Year", y = "CA as % of GDP", title = "CA as % of GDP and Exchange Rates\nFor France", color = "") +
   scale_color_manual(values = colors2) +
   theme(legend.position="bottom")
