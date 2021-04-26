@@ -230,7 +230,9 @@ ggplot() +
 
 ## 4. Currency union and its effects
 
+France is a euro-zone member which reduces the likelihood of speculative attacks on the currency, keeping inflation low, providing exchange-rate stability. France can tackle large CA imbalances through fiscal policy but not monetary policy, this would only be possible if all euro-zone members agree to said monetary policy action.
 
+Possible to add: For France to maintain its C.A close to zero, in case of CA deficit,  by Taxation or lowering government spending. Or other incentives to stimulate savings & lower consumption.  Policies that allows french firms to compete more internationally.
 
 # Q3: Investment rate and the Feldstein-Horioka puzzle
 
@@ -257,5 +259,8 @@ ggplot() +
 
 ## 3. Feldstein-Horioka puzzle
 
+The Feldstein-Horioka criterion states that free capital mobility should portray no strong correlation between investments and savings. Based on the graph above, it becomes clear that the puzzle does not hold and the correlation seems to be disappearing over time. 
+
+Possible to add: This could be due to large trade imbalances or due to france becoming more integrated in the international capital market.
 
 # References
