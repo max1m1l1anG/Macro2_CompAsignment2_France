@@ -160,7 +160,7 @@ DF_quart_FR %>%
 \newpage
 
 ```{r}
-# Creating and printing atable with all the annual data
+# Creating and printing a table with all the annual data
 
 DF_ann_FR <- DF_FR %>%
   select(c(date, GovDebt_ann_FR, SavR_ann_FR)) %>%
@@ -184,7 +184,7 @@ DF_ann_FR %>%
 
 ```{r, warning = FALSE}
 #Creating plot for Gov Debt & Interest Rate v Time
-#Ommiting NA first
+#Omitting NA first
 DF_FR_NA <- DF_FR %>%
   na.omit
 
@@ -199,11 +199,9 @@ ggplot() +
   theme(legend.position="bottom") +
   scale_x_date(limits = c(as.Date("1999-01-01"), as.Date("2019-01-01")))
 
-
-# Comment
-
 ```
 
+Government debt has been rising steadily, while long-term interest rates have decreased. Hence, they move against each other. A cause might be that, during recessions, both low interest rates and increased government deficits are used as economic stimuli. Furthermore, low interest rates decrease the cost of borrowing for governments.
 
 
 ## 2. Current account and the exchange rate
@@ -221,16 +219,19 @@ ggplot() +
   
 
 ```
-
+The current account and the exchange rate have both decreased and even though they fluctuate (e.g. due to changes in expectations), they do move together. Assuming relative price levels to be stable, if the euro appreciates, imports get more expensive, while exports become less competitive abroad, worsening the current account.
 
 
 ## 3. Relevant events and policy responses
 
 
 
+
+
+
 ## 4. Currency union and its effects
 
-
+As France is a euro-area country, it only has limited influence on its exchange rate and its monetary policy. To increase its real exchange rate it would need to decrease its price levels. France can reduce its current account deficit through contractionary fiscal policy, potentially disrupting its internal balance.
 
 # Q3: Investment rate and the Feldstein-Horioka puzzle
 
@@ -250,12 +251,15 @@ ggplot() +
   scale_color_manual(values = colors3) +
   theme(legend.position="bottom") +
   scale_x_date(limits = c(as.Date("1999-01-01"), as.Date("2019-06-01")))
-  
+
 
 ```
 
 
 ## 3. Feldstein-Horioka puzzle
 
+The Feldstein-Horioka criterion states that free capital mobility should portray no strong correlation between investments and savings. In the graph above, it becomes clear that the puzzle does not hold and the correlation seems to be disappearing over time. 
+
+Possible to add: This could be due to large trade imbalances or due to France becoming more integrated in the international capital market.
 
 # References
