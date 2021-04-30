@@ -266,8 +266,7 @@ The current account and the exchange rate have both decreased and even though th
 
 ## 3. Relevant events and policy responses
 
-
-
+(Corradin, Hoerova & Schepens, 2021)
 
 
 
@@ -300,7 +299,7 @@ ggplot() +
        color = "") +
   scale_y_continuous(labels = scales::percent,
                      breaks = seq(0, 0.25, by = 0.05),
-                     limits = c(0.2, 0.25)) +
+                     limits = c(0.15, 0.25)) +
   scale_color_manual(values = colors3) +
   theme(legend.position="bottom") +
   scale_x_date(limits = c(as.Date("1999-01-01"), as.Date("2019-06-01")))
@@ -316,3 +315,5 @@ The Feldstein-Horioka criterion states that free capital mobility should portray
 Possible to add: This could be due to large trade imbalances or due to France becoming more integrated in the international capital market.
 
 # References
+
+Corradin, S., Hoerova, M., & Schepens, G. (2021). Euro area money markets over the past 15 years: changes, driving factors and implications for monetary policy. Retrieved 30 April 2021, from https://www.ecb.europa.eu/pub/economic-research/resbull/2021/html/ecb.rb210318~fb6634551a.en.html
