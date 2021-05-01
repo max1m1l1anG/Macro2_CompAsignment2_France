@@ -5,7 +5,7 @@ author:
 - Maximilian Grotz (ANR u271366, SNR 2056313)
 - Abdirahman Nuur (ANR u824009 , SNR 2057152)
 - Mathieu  Van de Vel (ANR u130770, SNR 2050053)
-date: "14/04/2021"
+date: "01/05/2021"
 output:
   html_document:
     df_print: paged
@@ -172,7 +172,7 @@ DF_quart_FR <- DF_FR %>%
 
 table_quart_FR <- DF_quart_FR %>% 
   kable(caption = "Quarterly data for France") %>%
-  kable_classic(html_font = "Cambria", full_width = TRUE, font_size = 4.5)
+  kable_classic(html_font = "Cambria", full_width = TRUE, font_size = 7.5)
 ```
 \newpage
 
@@ -191,8 +191,8 @@ DF_ann_FR <- DF_FR %>%
          GovDebt_ann_FR = GovDebt_ann_FR * 100,
          SavR_ann_FR = SavR_ann_FR * 100) %>%
   na.omit() %>%
-  rename(`General_government_debt_as_a_%_of_GDP` = GovDebt_ann_FR, 
-         `Gross_national_savings_as_a_%_of_GDP` = SavR_ann_FR, 
+  rename(`General government debt as a % of GDP` = GovDebt_ann_FR, 
+         `Gross national savings as a % of GDP` = SavR_ann_FR, 
          `Year` = date)
 
 DF_ann_FR %>% 
@@ -200,6 +200,7 @@ DF_ann_FR %>%
   kable_classic(html_font = "Cambria", full_width = TRUE)
 ```
 
+\newpage
 
 # Q2: Government debt, interest rate, current account and the exchange rate
 
@@ -211,9 +212,11 @@ DF_ann_FR %>%
 DF_FR_NA <- DF_FR %>%
   na.omit
 
+#Assinging colors to titles
 colors1 <- c("Government debt" = "navyblue",
              "Long term interest rate" = "dodgerblue1")
 
+#Plotting graph
 ggplot() + 
   geom_line(DF_FR_NA,
             mapping = aes(x = date,
@@ -236,15 +239,17 @@ ggplot() +
 
 ```
 
-Government debt has been rising steadily, while long-term interest rates have decreased. Hence, they move against each other. A cause might be that, during recessions, both low interest rates and increased government deficits are used as economic stimuli. Furthermore, low interest rates decrease the cost of borrowing for governments.
+Government debt has been rising steadily, while long term interest rates have decreased. Hence, they move against each other. A cause might be that, during recessions, both low interest rates and increased government deficits are used as economic stimuli. Furthermore, low interest rates decrease the cost of borrowing for governments.
 
+\newpage
 
 ## 2. Current account and the exchange rate
 
 ```{r, warning = FALSE}
+#Assinging colors to titles
 colors2 <- c("Current account balance" = "navyblue",
              "Exchange Rate Eur/USD" = "dodgerblue1")
-
+#Plotting graph
 ggplot() + 
   geom_line(DF_FR,
             mapping = aes(x = date,
@@ -260,25 +265,28 @@ ggplot() +
                                          name = "Exchange Rate - Eur/Dollar")) +
   labs(x = "Year",
        y = "CA as % of GDP",
-       title = "CA as % of GDP and Exchange Rates\nFor France",
+       title = "Current Account (CA) as % of GDP and Exchange Rates\nFor France",
        color = "") +
   scale_color_manual(values = colors2) +
   theme(legend.position="bottom")
   
 
 ```
-The current account and the exchange rate have both decreased and even though they fluctuate (e.g. due to changes in expectations), they do move together. Assuming relative price levels to be stable, if the euro appreciates, imports get more expensive, while exports become less competitive abroad, worsening the current account.
+
+The current account and the exchange rate have both decreased, seemingly almost moving together (deviations might occur because of e.g. changes in exchange rate expectations). Assuming relative price levels to be stable, if the euro appreciates, imports get more expensive, while exports become less competitive abroad, worsening the current account.
 
 
 ## 3. Relevant events and policy responses
 
-The euro appreciated steadily in the early 2000s as it established itself as an international currency (Maggiori, Brent, & Schreger, 2019). This might, combined with France’s competitive weaknesses (International Monetary Fund. European Dept., 2013), have driven its deterioration of the current account. During the Great Recession government debt increased. Interest rates have declined due to a fall in inflation expectations and in the real interest rate (Claeys & Efstathiou, 2017). The latter and the sudden depreciation of the euro in 2015 were partly caused by the ECB’s quantitative easing program (Dedola, Georgiadis, Gräb, & Mehl, 2020).
+The euro appreciated steadily in the early 2000s as it established itself as an international currency (Maggiori, Brent, & Schreger, 2019). This might, combined with France’s competitive weaknesses (International Monetary Fund. European Dept., 2013), have driven its deterioration of the current account. During the Great Recession government debt increased. Interest rates have declined due to a fall in both inflation expectations and the real interest rate (Claeys & Efstathiou, 2017). The latter and the sudden depreciation of the euro in 2015 were partly caused by the ECB’s quantitative easing program (Dedola, Georgiadis, Gräb, & Mehl, 2020).
 
 
 
 ## 4. Currency union and its effects
 
-As France is a euro-area country, it only has limited influence on its exchange rate and its monetary policy. To increase its real exchange rate it would need to decrease its price levels. France can reduce its current account deficit through contractionary fiscal policy, potentially disrupting its internal balance.
+As France is a euro area country, it only has limited influence on its exchange rate and its monetary policy. To increase its real exchange rate it would need to decrease its price levels. France can reduce its current account deficit through contractionary fiscal policy, potentially disrupting its internal balance.
+
+\newpage
 
 # Q3: Investment rate and the Feldstein-Horioka puzzle
 
@@ -288,8 +296,10 @@ As France is a euro-area country, it only has limited influence on its exchange 
 ## 2. Investment rate: Graph
 
 ```{r, warning = FALSE}
+#Assinging colors to titles
 colors3 <- c("Savings Rate" = "navyblue", "Investment Rate" = "dodgerblue1")
 
+#Plotting graph
 ggplot() + 
   geom_line(DF_FR_NA,
             mapping = aes(x = date,
@@ -316,23 +326,17 @@ ggplot() +
 
 ## 3. Feldstein-Horioka puzzle
 
-The Feldstein-Horioka criterion states that free capital mobility should portray no strong correlation between investments and savings. In the graph above, it becomes clear that the puzzle does not hold and the correlation seems to be disappearing over time. 
+France's investments and savings rates correlate quite strongly. According to Feldstein and Horioka this does not indicate a smoothly working international capital market. The graph illustrates an increasing correlation, more specifically, we see this correlation become stronger around the 2008 financial crisis, perhaps due to home bias on equity holdings.
 
-Possible to add: This could be due to large trade imbalances or due to France becoming more integrated in the international capital market.
+\newpage
 
 # References
 
-Claeys, G., & Efstathiou, K. (2017). Is the recent increase in long-term
-  interest rates a threat to euro-area recovery? *Bruegel Policy Contribution*
-  (2017/14). Retrieved from http://hdl.handle.net/10419/173110
-Dedola, L., Georgiadis, G., Gräb, J., & Mehl, A. (2020, October 20). Does a big 
-  bazooka matter? Quantitative easing policies and exchange rates. 
-  *Research Bulletin*, 76. Retrieved from
-  https://www.ecb.europa.eu/pub/economic-research/resbull/2020/html/ecb.rb201020~85fb68a983.en.html
-International Monetary Fund. European Dept. (2013, August 5). France: Selected 
-  Issues paper. *IMF Staff Country Reports*, Volume 2013(Issue 252), 4-14.
-  doi:https://doi.org/10.5089/9781484389133.002
-Maggiori, M., Brent, N., & Schreger, J. (2019, May). The Rise of the Dollar and 
-  Fall of the Euro as International Currencies. *AEA Papers and Proceedings*, 
-  109, 521-526. doi:10.1257/pandp.20191007
+Claeys, G., & Efstathiou, K. (2017). Is the recent increase in long-term interest rates a threat to euro-area recovery? *Bruegel Policy Contribution* (2017/14). Retrieved from http://hdl.handle.net/10419/173110
+
+Dedola, L., Georgiadis, G., Gräb, J., & Mehl, A. (2020, October 20). Does a big bazooka matter? Quantitative easing policies and exchange rates. *Research Bulletin*, 76. Retrieved from https://www.ecb.europa.eu/pub/economic-research/resbull/2020/html/ecb.rb201020~85fb68a983.en.html
+
+International Monetary Fund. European Dept. (2013, August 5). France: Selected Issues paper. *IMF Staff Country Reports*, Volume 2013(Issue 252), 4-14. doi:https://doi.org/10.5089/9781484389133.002
+
+Maggiori, M., Brent, N., & Schreger, J. (2019, May). The Rise of the Dollar and Fall of the Euro as International Currencies. *AEA Papers and Proceedings*, 109, 521-526. doi:10.1257/pandp.20191007
 
