@@ -31,7 +31,7 @@ options(scipen = 999) # Disable scientific notation
 
 ```
 
-```{r}
+```{r message = FALSE, warning = FALSE}
 
 # Importing the Current Account Balance as a % of GDP of France
 # SOURCE: FRED https://fred.stlouisfed.org/series/FRAB6BLTT02STSAQ
