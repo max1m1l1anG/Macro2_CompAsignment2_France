@@ -170,9 +170,15 @@ DF_quart_FR <- DF_FR %>%
          `Date (Year-Month)` = date
           ) 
 
-DF_quart_FR %>% 
+table_quart_FR <- DF_quart_FR %>% 
   kable(caption = "Quarterly data for France") %>%
   kable_classic(html_font = "Cambria", full_width = TRUE, font_size = 4.5)
+```
+\newpage
+
+```{r echo=FALSE}
+table_quart_FR
+
 ```
 \newpage
 
@@ -266,7 +272,7 @@ The current account and the exchange rate have both decreased and even though th
 
 ## 3. Relevant events and policy responses
 
-(Corradin, Hoerova & Schepens, 2021)
+The euro appreciated steadily in the early 2000s as it established itself as an international currency (Maggiori, Brent, & Schreger, 2019). This might, combined with France’s competitive weaknesses (International Monetary Fund. European Dept., 2013), have driven its deterioration of the current account. During the Great Recession government debt increased. Interest rates have declined due to a fall in inflation expectations and in the real interest rate (Claeys & Efstathiou, 2017). The latter and the sudden depreciation of the euro in 2015 were partly caused by the ECB’s quantitative easing program (Dedola, Georgiadis, Gräb, & Mehl, 2020).
 
 
 
@@ -316,4 +322,17 @@ Possible to add: This could be due to large trade imbalances or due to France be
 
 # References
 
-Corradin, S., Hoerova, M., & Schepens, G. (2021). Euro area money markets over the past 15 years: changes, driving factors and implications for monetary policy. Retrieved 30 April 2021, from https://www.ecb.europa.eu/pub/economic-research/resbull/2021/html/ecb.rb210318~fb6634551a.en.html
+Claeys, G., & Efstathiou, K. (2017). Is the recent increase in long-term
+  interest rates a threat to euro-area recovery? *Bruegel Policy Contribution*
+  (2017/14). Retrieved from http://hdl.handle.net/10419/173110
+Dedola, L., Georgiadis, G., Gräb, J., & Mehl, A. (2020, October 20). Does a big 
+  bazooka matter? Quantitative easing policies and exchange rates. 
+  *Research Bulletin*, 76. Retrieved from
+  https://www.ecb.europa.eu/pub/economic-research/resbull/2020/html/ecb.rb201020~85fb68a983.en.html
+International Monetary Fund. European Dept. (2013, August 5). France: Selected 
+  Issues paper. *IMF Staff Country Reports*, Volume 2013(Issue 252), 4-14.
+  doi:https://doi.org/10.5089/9781484389133.002
+Maggiori, M., Brent, N., & Schreger, J. (2019, May). The Rise of the Dollar and 
+  Fall of the Euro as International Currencies. *AEA Papers and Proceedings*, 
+  109, 521-526. doi:10.1257/pandp.20191007
+
