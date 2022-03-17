@@ -25,7 +25,7 @@ On the next two pages you may find the tables with our quarterly and annual data
 ```{r echo = FALSE, message = FALSE, warning = FALSE}
 # ALL THE FOLLOWING CODE WILL NOT BE VISIBLE IN TEH FINAL DOCUMENT, BUT IS JUST THERE TO HAVE THE TABLES ON THE FIRST PAGES
 # Here we import all relevant packages and set options
-
+##
 library(dplyr)
 library(tidyverse)
 library(lubridate) # This package is used for working with dates
@@ -169,9 +169,9 @@ DF_quart_FR <- DF_FR %>%
          IntRate_quart_FR = IntRate_quart_FR * 100) %>%
   rename(`Current Account Balance (as % of GDP)` = CAasPercGDP_quart_FR,
           `Interest Rate (in %)` = IntRate_quart_FR,
-          `Exchange Rate €/USD` = XR_quart_EurUSD, 
-          `GDP (millions of €)` = GDP_quart_Millionseur_FR, 
-          `Investment (millions of €)` = Invest_quart_Millionseur_FR,
+          `Exchange Rate ???/USD` = XR_quart_EurUSD, 
+          `GDP (millions of ???)` = GDP_quart_Millionseur_FR, 
+          `Investment (millions of ???)` = Invest_quart_Millionseur_FR,
           `Investment rate (as % of GDP)` = InvestmentR_Fr,
          `Date` = date
           ) 
@@ -363,9 +363,9 @@ DF_quart_FR <- DF_FR %>%
          IntRate_quart_FR = IntRate_quart_FR * 100) %>%
   rename(`Current Account Balance (as % of GDP)` = CAasPercGDP_quart_FR,
           `Interest Rate (in %)` = IntRate_quart_FR,
-          `Exchange Rate €/USD` = XR_quart_EurUSD, 
-          `GDP (millions of €)` = GDP_quart_Millionseur_FR, 
-          `Investment (millions of €)` = Invest_quart_Millionseur_FR,
+          `Exchange Rate ???/USD` = XR_quart_EurUSD, 
+          `GDP (millions of ???)` = GDP_quart_Millionseur_FR, 
+          `Investment (millions of ???)` = Invest_quart_Millionseur_FR,
           `Investment rate (as % of GDP)` = InvestmentR_Fr,
          `Date` = date
           ) 
@@ -485,7 +485,7 @@ The current account and the exchange rate have both decreased, seemingly moving 
 
 ## 3. Relevant events and policy responses
 
-The euro appreciated steadily during the 2000s as it established itself as an international currency (Maggiori, Brent, & Schreger, 2019). This might, combined with France’s competitive weaknesses (International Monetary Fund. European Dept., 2013), have driven the deterioration of its current account. During the Great Recession government debt increased. Interest rates have declined due to a fall in both inflation expectations and the real interest rate (Claeys & Efstathiou, 2017). The latter and the sudden depreciation of the euro in 2015 were partially caused by the ECB’s quantitative easing program (Dedola, Georgiadis, Gräb, & Mehl, 2020).
+The euro appreciated steadily during the 2000s as it established itself as an international currency (Maggiori, Brent, & Schreger, 2019). This might, combined with France???s competitive weaknesses (International Monetary Fund. European Dept., 2013), have driven the deterioration of its current account. During the Great Recession government debt increased. Interest rates have declined due to a fall in both inflation expectations and the real interest rate (Claeys & Efstathiou, 2017). The latter and the sudden depreciation of the euro in 2015 were partially caused by the ECB???s quantitative easing program (Dedola, Georgiadis, Gr??b, & Mehl, 2020).
 
 
 
@@ -543,7 +543,7 @@ Board of Governors of the Federal Reserve System (US). 2021. *U.S. / Euro Foreig
 
 Claeys, G., & Efstathiou, K. (2017). Is the recent increase in long-term interest rates a threat to euro-area recovery? *Bruegel Policy Contribution* (2017/14). Retrieved from http://hdl.handle.net/10419/173110
 
-Dedola, L., Georgiadis, G., Gräb, J., & Mehl, A. (2020, October 20). Does a big bazooka matter? Quantitative easing policies and exchange rates. *Research Bulletin*, 76. Retrieved from https://www.ecb.europa.eu/pub/economic-research/resbull/2020/html/ecb.rb201020~85fb68a983.en.html
+Dedola, L., Georgiadis, G., Gr??b, J., & Mehl, A. (2020, October 20). Does a big bazooka matter? Quantitative easing policies and exchange rates. *Research Bulletin*, 76. Retrieved from https://www.ecb.europa.eu/pub/economic-research/resbull/2020/html/ecb.rb201020~85fb68a983.en.html
 
 Eurostat. (2021). *Gross Domestic Product for France [CPMNACSCAB1GQFR]*. Retrieved from FRED, Federal Reserve Bank of St. Louis: https://fred.stlouisfed.org/series/CPMNACSCAB1GQFR
 
